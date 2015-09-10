@@ -19,6 +19,6 @@ public class StadServiceImpl implements StadService {
 	
 	@Override
 	public List<Stad> findByLandcode(String code){
-		return stadDAO.findByLandCodeLike(code);
+		return stadDAO.findStedenMetLuchthaven(code);
 	}
 }

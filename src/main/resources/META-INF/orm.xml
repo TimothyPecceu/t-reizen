@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm
+http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd" version="2.1">
+<named-query name="Stad.findStedenMetLuchthaven">
+<query>
+	select s from Stad as s where s.land.code = :landCode and s.id in (select l.stad.id from Luchthaven as l)
+</query>
+</named-query>
+</entity-mappings>
