@@ -8,15 +8,15 @@
 <body>
 	<v:menu />
 	<h1>Vlucht zoeken</h1>
-	<c:url value="/boeking/vertrekstad" var="url"/>
-	<form:form action="${url}" method="get" commandName="vluchtinfo">
+	<c:url value="/boeking" var="url"/>
+	<form:form action="${url}" commandName="vluchtinfo">
 	<select name='landcode' id='landSelect' size='8'>
 		<c:forEach items='${landen}' var='land'>
 			<option value='${land.code}'>${land.naam}</option>
 		</c:forEach>
 	</select>
-	<form:label path="datum">Vertrekdatum: <form:input path="datum" /></form:label>
-	<input type="submit" value="Volgende">
+	<form:label path="datum">Vertrekdatum: <form:input type="text" path="datum" /></form:label>
+	<input type="submit" value="Volgende" name="vertrekstad">
 	</form:form>
 </body>
 </html>

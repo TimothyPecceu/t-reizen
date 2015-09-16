@@ -1,12 +1,22 @@
 package be.vdab.web;
 
-import java.util.Date;
+import java.io.Serializable;
 
-class Vluchtinfo {
+public class Vluchtinfo implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String vertrekLuchthavenCode;
 	private String bestemmingsLuchthavenCode;
-	private Date datum;
+	private String datum;
 
+	public Vluchtinfo() {
+	}
+	
+	public Vluchtinfo(String vertrekLuchthavenCode, String bestemmingsLuchthavenCode, String datum) {
+		this.vertrekLuchthavenCode = vertrekLuchthavenCode;
+		this.bestemmingsLuchthavenCode = bestemmingsLuchthavenCode;
+		this.datum = datum;
+	}
+	
 	public String getVertrekLuchthavenCode() {
 		return vertrekLuchthavenCode;
 	}
@@ -23,11 +33,11 @@ class Vluchtinfo {
 		this.bestemmingsLuchthavenCode = bestemmingsLuchthavenCode;
 	}
 
-	public Date getDatum() {
+	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(Date datum) {
+	public void setDatum(String datum) {
 		this.datum = datum;
 	}
 

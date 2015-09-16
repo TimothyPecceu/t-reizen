@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import be.vdab.entities.Boeking;
 import be.vdab.services.LandService;
 import be.vdab.services.LuchthavenService;
+import be.vdab.services.ScheduleService;
 import be.vdab.services.StadService;
 
 @Controller
@@ -24,17 +24,20 @@ public class BoekingController {
 	private static final String BESTEMMINGSLAND_VIEW = "boeking/bestemmingsland";
 	private static final String BESTEMMINGSSTAD_VIEW = "boeking/bestemmingsstad";
 	private static final String BESTEMMINGSLUCHTHAVEN_VIEW = "boeking/bestemmingsluchthaven";
+	private static final String VLUCHTEN_VIEW = "boeking/vluchten";
 	
 	
-	private LandService landService;
-	private StadService stadService;
-	private LuchthavenService luchthavenService;
+	private final LandService landService;
+	private final StadService stadService;
+	private final LuchthavenService luchthavenService;
+	private final ScheduleService scheduleService;
 	
 	@Autowired
-	public BoekingController(LandService landService, StadService stadService, LuchthavenService luchthavenService) {
+	public BoekingController(LandService landService, StadService stadService, LuchthavenService luchthavenService, ScheduleService scheduleService) {
 		this.landService = landService;
 		this.stadService = stadService;
 		this.luchthavenService = luchthavenService;
+		this.scheduleService = scheduleService;
 	}
 	
 	@RequestMapping(path= "/vertrekland",method = RequestMethod.GET)
@@ -45,38 +48,47 @@ public class BoekingController {
 		return view;
 	}
 	
-	@RequestMapping(path="/vertrekstad", params="landcode")
-	ModelAndView createFormVertrekStad(String landcode){
+	@RequestMapping(method = RequestMethod.POST, params={"landcode","vertrekstad"})
+	ModelAndView createFormVertrekStad(String landcode, Vluchtinfo vluchtinfo){
 		ModelAndView view = new ModelAndView(VERTREKSTAD_VIEW);
 		view.addObject("steden", stadService.findByLandcode(landcode));
 		return view;
 	}
 	
-	@RequestMapping(path="/vertrekluchthaven", params="stadid")
-	ModelAndView createFormVertrekLuchthaven(long stadid, @ModelAttribute Vluchtinfo vluchtinfo, BindingResult bindingResult){
+	@RequestMapping(method = RequestMethod.POST, params={"stadid", "vertrekluchthaven"})
+	ModelAndView createFormVertrekLuchthaven(long stadid, Vluchtinfo vluchtinfo, BindingResult bindingResult){
 		ModelAndView view = new ModelAndView(VERTREKLUCHTHAVEN_VIEW);
 		view.addObject("luchthavens", luchthavenService.findByStadId(stadid));
+		view.addObject("info", vluchtinfo);
 		return view;
 	}
 	
-	@RequestMapping(path="/bestemmingsland", method= RequestMethod.GET)
-	ModelAndView createFormBestemming(){
+	@RequestMapping(method = RequestMethod.POST, params="bestemmingsland")
+	ModelAndView createFormBestemming(Vluchtinfo vluchtinfo){
 		ModelAndView view = new ModelAndView(BESTEMMINGSLAND_VIEW);
 		view.addObject("landen", landService.findAll());
+		view.addObject("info", vluchtinfo);
 		return view;
 	}
 	
-	@RequestMapping(path="/bestemmingsstad", params="landcode")
+	@RequestMapping(method = RequestMethod.POST, params={"landcode", "bestemmingsstad"})
 	ModelAndView createFormBestemmingsStad(String landcode){
 		ModelAndView view = new ModelAndView(BESTEMMINGSSTAD_VIEW);
 		view.addObject("steden", stadService.findByLandcode(landcode));
 		return view;
 	}
 	
-	@RequestMapping(path="/bestemmingsluchthaven", params="stadid")
+	@RequestMapping(method = RequestMethod.POST, params={"stadid","bestemmingsluchthaven"})
 	ModelAndView createFormBestemmingsLuchthaven(long stadid, @ModelAttribute Vluchtinfo vluchtinfo, BindingResult bindingResult){
 		ModelAndView view = new ModelAndView(BESTEMMINGSLUCHTHAVEN_VIEW);
 		view.addObject("luchthavens", luchthavenService.findByStadId(stadid));
+		return view;
+	}
+	
+	@RequestMapping(path="/vluchten")
+	ModelAndView showVluchten(@ModelAttribute Vluchtinfo vluchtinfo){
+		ModelAndView view = new ModelAndView(VLUCHTEN_VIEW);
+		view.addObject("scheduleResource", scheduleService.getVluchten(vluchtinfo.getVertrekLuchthavenCode(), vluchtinfo.getBestemmingsLuchthavenCode(), vluchtinfo.getDatum()));
 		return view;
 	}
 }

@@ -7,14 +7,14 @@
 <body>
 	<v:menu />
 	<h1>Vlucht zoeken</h1>
-	<c:url value="/boeking/bestemmingsluchthaven" var="url"/>
-	<form action="${url}" method="get">
+	<c:url value="/boeking" var="url"/>
+	<form action="${url}" method="post">
 	<select name='stadid' id='stadSelect' size='8'>
 		<c:forEach items='${steden}' var='stad'>
 			<option value='${stad.id}'>${stad.naam}</option>
 		</c:forEach>
 	</select>
-	<input type="submit" value="Volgende">
+	<input type="submit" value="Volgende" name="bestemmingsluchthaven">
 	</form>
 </body>
 </html>

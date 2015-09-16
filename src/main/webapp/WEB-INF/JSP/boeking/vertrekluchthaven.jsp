@@ -8,10 +8,11 @@
 <body>
 	<v:menu />
 	<h1>Vlucht zoeken</h1>
-	<c:url value="/boeking/bestemmingsland" var="url"/>
-	<form:form action="${url}" method="get" commandName="vluchtinfo">
+	<h2>${info.datum}</h2>
+	<c:url value="/boeking" var="url"/>
+	<form:form action="${url}" method="post" commandName="vluchtinfo">
 	<form:select name='luchthavencode' items="${luchthavens}" itemLabel="naam" itemValue="code" path="vertrekLuchthavenCode" id='luchthavenSelect' size='8'/>
-	<input type="submit" value="Volgende">
+	<input type="submit" value="Volgende" name="bestemmingsland">
 	</form:form>
 </body>
 </html>

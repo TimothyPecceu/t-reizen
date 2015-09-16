@@ -22,4 +22,9 @@ public class LuchthavenServiceImpl implements LuchthavenService {
 	public List<Luchthaven> findByStadId(long id){
 		return luchthavenDAO.findByStadIdLike(id);
 	}
+	
+	@Override
+	public Luchthaven read(String code){
+		return luchthavenDAO.findOne(code);
+	}
 }
