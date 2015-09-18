@@ -1,19 +1,15 @@
 package be.vdab.restclients;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@JsonAutoDetect(fieldVisibility=Visibility.ANY)
 public class Schedule {
 	
-	@XmlElement(name="TotalJourney")
+	@JsonProperty("TotalJourney")
 	TotalJourney totalJourney;
-	//Flight flight;
+	@JsonProperty("Flight")
+	List<Flight> flight;
 	
 	public TotalJourney getTotalJourney() {
 		return totalJourney;
@@ -23,9 +19,12 @@ public class Schedule {
 		this.totalJourney = totalJourney;
 	}
 	
-	/*public Flight getFlight() {
+	public List<Flight> getFlight() {
 		return flight;
-	}*/
-	
+	}
+
+	public void setFlight(List<Flight> flight) {
+		this.flight = flight;
+	}
 	
 }

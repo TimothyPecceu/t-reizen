@@ -1,26 +1,26 @@
 package be.vdab.restclients;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Flight {
+	
+	@JsonProperty("Departure")
 	Departure departure;
+	@JsonProperty("Arrival")
 	Arrival arrival;
+	@JsonProperty("MarketingCarrier")
 	MarketingCarrier marketingCarrier;
-	Details details;
+	
 	public Departure getDeparture() {
 		return departure;
 	}
+	
 	public Arrival getArrival() {
 		return arrival;
 	}
+	
 	public MarketingCarrier getMarketingCarrier() {
 		return marketingCarrier;
-	}
-	public Details getDetails() {
-		return details;
-	}
-	
+	}	
 	
 }

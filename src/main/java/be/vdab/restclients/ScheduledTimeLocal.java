@@ -1,12 +1,11 @@
 package be.vdab.restclients;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlAccessorType(XmlAccessType.FIELD)
+
 public class ScheduledTimeLocal {
-	@XmlElement(name="DateTime")
+	
+	@JsonProperty("DateTime")
 	String dateTime;
 
 	public String getDateTime() {

@@ -21,8 +21,6 @@ public class Vlucht implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
-	@Temporal(TemporalType.DATE)
-	private Date datum;
 	@ManyToOne
 	@JoinColumn(name="vanluchthaven")
 	private Luchthaven vanLuchthaven;
@@ -33,5 +31,4 @@ public class Vlucht implements Serializable {
 	@JoinColumn(name="maatschappij")
 	private Maatschappij maatschappij;
 	private String vluchtnr;
-	private int tussenstops;
 }

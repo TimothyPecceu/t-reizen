@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import be.vdab.restclients.ScheduleClient;
 import be.vdab.restclients.ScheduleResource;
+import be.vdab.restclients.VluchtenSchedule;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
@@ -16,7 +17,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	}
 	
 	@Override
-	public ScheduleResource getVluchten(String vertrek, String bestemming, String datum){
+	public VluchtenSchedule getVluchten(String vertrek, String bestemming, String datum){
 		return scheduleClient.getVluchten(vertrek, bestemming, datum);
 	}
 }

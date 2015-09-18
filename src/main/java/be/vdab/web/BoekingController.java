@@ -88,7 +88,7 @@ public class BoekingController {
 	@RequestMapping(path="/vluchten")
 	ModelAndView showVluchten(@ModelAttribute Vluchtinfo vluchtinfo){
 		ModelAndView view = new ModelAndView(VLUCHTEN_VIEW);
-		view.addObject("scheduleResource", scheduleService.getVluchten(vluchtinfo.getVertrekLuchthavenCode(), vluchtinfo.getBestemmingsLuchthavenCode(), vluchtinfo.getDatum()));
+		view.addObject("vluchtenSchedule", scheduleService.getVluchten(vluchtinfo.getVertrekLuchthavenCode(), vluchtinfo.getBestemmingsLuchthavenCode(), vluchtinfo.getDatum()));
 		return view;
 	}
 }

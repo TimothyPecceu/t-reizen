@@ -1,26 +1,18 @@
 package be.vdab.restclients;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
-@JsonAutoDetect(fieldVisibility=Visibility.ANY)
 public class ScheduleResource {
-	
-	@XmlElement(name="Schedule")
-	Schedule schedule;
+	@JsonProperty("Schedule")
+	List<Schedule> schedule;
 
-	public Schedule getSchedule() {
+	public List<Schedule> getSchedule() {
 		return schedule;
 	}
 
-	public void setSchedule(Schedule schedule) {
+	public void setSchedule(List<Schedule> schedule) {
 		this.schedule = schedule;
 	}
 }
