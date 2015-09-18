@@ -19,7 +19,7 @@ public class LufthansaScheduleClientTest {
 	
 	@Before
 	public void before(){
-		vluchten=client.getVluchten("BRU", "AEP", "2015-09-25");
+		vluchten=client.getVluchten("BRU", "AEP", "2015-09-24");
 	}
 	
 	/*@Test
@@ -42,10 +42,10 @@ public class LufthansaScheduleClientTest {
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getTotalJourney());
 	}*/
 	
-	@Test
+	/*@Test
 	public void totalJourneyHeeftEenDuration(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getTotalJourney().getDuration());
-	}
+	}*/
 	
 	/*@Test
 	public void eenScheduleHeeftEenFlight(){
@@ -57,50 +57,50 @@ public class LufthansaScheduleClientTest {
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getDeparture());
 	}*/
 	
-	@Test
+	/*@Test
 	public void eenDepartureHeeftEenAirportCode(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getDeparture().getAirportCode());
-	}
+	}*/
 	
 	/*@Test
 	public void eenDepartureHeeftEenScheduledTimeLocal(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getDeparture().getScheduledTimeLocal());
 	}*/
 	
-	@Test
+	/*@Test
 	public void eenDepartureScheduledTimeLocalHeeftEenDateTime(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getDeparture().getScheduledTimeLocal().getDateTime());
-	}
+	}*/
 	
 	/*@Test
 	public void eenFlightHeeftEenArrival(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getArrival());
 	}*/
 	
-	@Test
+	/*@Test
 	public void eenArrivalHeeftEenAirportCode(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getArrival().getAirportCode());
-	}
+	}*/
 	
 	/*@Test
 	public void eenArrivalHeeftEenScheduledTimeLocal(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getArrival().getScheduledTimeLocal());
 	}*/
 	
-	@Test
+	/*@Test
 	public void eenArrivalScheduledTimeLocalHeeftEenDateTime(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getArrival().getScheduledTimeLocal().getDateTime());
-	}
+	}*/
 	
 	/*@Test
 	public void eenFlightHeeftEenMarketingCarrier(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getMarketingCarrier());
 	}*/
 	
-	@Test
+	/*@Test
 	public void eenMarketingCarrierHeeftEenAirlineID(){
 		assertNotNull(vluchten.getScheduleResource().getSchedule().get(0).getFlight().get(0).getMarketingCarrier().getAirlineID());
-	}
+	}*/
 	
 	@Test
 	public void eenMarketingCarrierHeeftEenFlightNumber(){

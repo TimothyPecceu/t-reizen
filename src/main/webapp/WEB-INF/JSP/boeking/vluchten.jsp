@@ -1,6 +1,7 @@
 <%@page contentType='text/html' pageEncoding='UTF-8' session='false'%>
 <%@taglib prefix="v" uri="http://vdab.be/tags"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!doctype html>
 <html>
 <v:head title="Vluchten" />
@@ -8,18 +9,25 @@
 	<v:menu />
 	<h1>Vluchten</h1>
 	<table>
-	<thead>
-	<tr><th>vertrek<th><th>bestemming</th><th>Carrier</th><th>Vlucht</th><th>Duur</th></tr>
-	</thead>
-	<tbody>
-	<c:forEach items="${scheduleResource.schedule}" var="schedule">
-	<tr><td>${schedule.flight.departure.airportCode}</td>
-	<td>${schedule.flight.arrival.airportCode}</td>
-	<td>${schedule.flight.marketingCarrier.airlineID}</td>
-	<td>${schedule.flight.marketingCarrier.flightNumber}</td>
-	<td>${schedule.totalJourney.duration}</td></tr>
-	</c:forEach>
-	</tbody>
+		<thead>
+			<tr>
+				<th>Vertrek Tijd</th>
+				<th>Vertrek Luchthaven</th>
+				<th>Bestemming Luchthaven</th>
+				<th>Duur Vlucht</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${vluchtenSchedule.scheduleResource.schedule}"
+				var="schedule">
+				<tr>
+					<td>${schedule.flight[0].departure.scheduledTimeLocal.dateTime}</td>
+					<td>${schedule.flight[0].departure.airportCode}</td>
+					<td>${schedule.flight[0].arrival.airportCode}</td>
+					<td>${schedule.totalJourney.formattedDuration}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 </body>
 </html>

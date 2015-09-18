@@ -17,5 +17,6 @@ public class CreateControllerBeans extends WebMvcConfigurerAdapter {
 		resolver.setPrefix("/WEB-INF/JSP/");
 		resolver.setSuffix(".jsp");
 		return resolver;
-	}
+	}	
+	
 }
